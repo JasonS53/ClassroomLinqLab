@@ -8,7 +8,6 @@ namespace ClassroomLab
     {
         static void Main(string[] args)
         {
-            //CreateDB();
             DisplayAllDB();
             Console.WriteLine();
             DisplayStudentDB();
@@ -24,7 +23,7 @@ namespace ClassroomLab
                 var sts = context.Students.Where(s => s.StudentId == input).ToList();
                 foreach (var ok in sts)
                 {
-                    Console.WriteLine($"{ok.Name}'s favourite food is {ok.Food} and their hometown is {ok.Hometown}.");
+                    Console.WriteLine($"{ok.Name}'s favourite food is {ok.Food} and their hometown is {ok.Hometown}.");                   
                 } 
             }           
         }
@@ -33,7 +32,7 @@ namespace ClassroomLab
         {
             using (var context = new ClassContext())
             {
-                var sts = context.Students.Where(s => s.Name == s.Name).ToList();
+                var sts = context.Students.Where(s => s.Name == s.Name).ToList();//Turns out this line is unnecessary
                 foreach (Student student in sts)
                 {                   
                     Console.WriteLine($"Id: {student.StudentId} Name: {student.Name}");
@@ -102,9 +101,7 @@ namespace ClassroomLab
                 context.Students.Add(st5);
                 context.Students.Add(st6);
                 context.Students.Add(st7);
-                context.SaveChanges();
-                //var sts = context.Students.Where(s => s.Name == "Jason").ToList();
-                //Console.WriteLine(sts.Count);
+                context.SaveChanges();                
             }
         }
     }
